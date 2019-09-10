@@ -326,12 +326,12 @@ def to_dict(self):
         "number_of_requests": self.number_of_requests(),
         "time_to_dom_content_loaded": self.time_to_dom_content_loaded(),
         "page_weight": self.page_weight(),
-        "connection_time": self.connection_time,
-        "request_time": self.request_time,
-        "fetch_time": self.fetch_time,
-        "navigation_timing": self.navigation_timing.__dict__,
-        "paint_timing": self.paint_timing.__dict__,
-        "resources": [r.__dict__ for r in self.resources]
+        "connection_time": self.connection_time(),
+        "request_time": self.request_time(),
+        "fetch_time": self.fetch_time(),
+        "navigation_timing": self.navigation_timing,
+        "paint_timing": self.paint_timing,
+        "resources": [r for r in self.resources]
     }
 
 def to_json(self) -> str:

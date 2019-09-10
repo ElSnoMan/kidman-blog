@@ -1,7 +1,7 @@
 ---
 title: UI Performance Testing with Selenium
 date: 2019-09-10
-description: Shift Left your UI Performance testing by using Selenium and the PerformanceTiming API.
+description: Shift Left your UI Performance testing by using Selenium and the W3C Timing API specifications.
 ---
 
 Performance testing is a very powerful pillar in the overall testing strategy. However, I see many companies either do this really far in their pipelines or not in their pipelines at all. They may have something that runs every night or week, or they have to manually kick-off a "performance suite", but it's usually an afterthought.
@@ -215,7 +215,7 @@ from lib.selenium import performance
 
 def test_print_qap_performance():
     driver = webdriver.Chrome()
-    driver.get('https://qap.dev)
+    driver.get('https://qap.dev')
     pprint(performance.get(driver))
 ```
 
@@ -224,7 +224,7 @@ In the same file, make another test to get the **Time to Interactive (TTI)**.
 ```Python
 def test_qap_time_to_interactive():
     driver = webdriver.Chrome()
-    driver.get('https://qap.dev)
+    driver.get('https://qap.dev')
     perf = performance.get(driver)
     pprint(perf['navigationTiming']['domInteractive'])
 ```
@@ -319,7 +319,6 @@ We also want the ability to easily turn our WindowPerformance object into a dict
 ```Python
 def to_dict(self):
     return {
-        "time_origin": self.time_origin,
         "page_load_time": self.page_load_time(),
         "time_to_first_byte": self.time_to_first_byte(),
         "time_to_first_contentful_paint": self.time_to_first_contentful_paint(),
